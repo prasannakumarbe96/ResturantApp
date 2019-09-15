@@ -1,0 +1,34 @@
+
+<form>
+  Name:<input type="text" name="Name" [(ngModel)]="seating.Name"/><br/>
+  Type:<input type="text" name="Type" [(ngModel)]="seating.Type"/><br/>
+  SeatCount:<input type="number" name="seatCount" [(ngModel)]="seating.seatCount"/><br/>
+  <button (click)="AddSeat(seating)">Add Seat</button>
+  
+</form>
+
+<table border="2px" align='center' style="align-content:center; ">
+  <tr>
+      <th>Table Id</th>
+      <th>Table Name</th>
+      <th>Type</th>
+      <th>No.Of Seats</th>
+  </tr>
+  <tr *ngFor="let table of seatlist" (click)="bookingTable(table.id)">
+    <td>{{table.id}}</td>
+    <td>{{table.name}}</td>
+    <td>{{table.type}}</td>
+    <td>{{table.seatCount}}</td>
+  </tr>
+ 
+ 
+</table>
+<div *ngIf="selecting">
+<form>
+  startDate:<input type="datetime-local" name='StartTime' [(ngModel)]='booking.StartTime'>
+  startDate:<input type="datetime-local" name='EndTime' [(ngModel)]='booking.EndTime'>
+  No.OfSeats:<input type="number" name="NoOfSeats" [(ngModel)]='booking.NoOfSeats'>
+  <button (click)="bookingtable(booking)">Booking</button>
+</form>
+<app-booking></app-booking>
+</div>
